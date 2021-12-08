@@ -18,23 +18,28 @@ class ExcelFile():
         self.worksheet.write(0, 1, 'Scenes')
         self.worksheet.write(0, 2, 'PSNR')
         self.worksheet.write(0, 3, 'SSIM')
+        self.worksheet.col(0).width = 256 * 16
+        self.worksheet.col(1).width = 256 * 22
+        self.worksheet.col(2).width = 256 * 10
+        self.worksheet.col(3).width = 256 * 10
         self.sum = 1
 
     def write_sheet(self, test_name, LF_name, psnr_iter_test, ssim_iter_test):
         ''' Save PSNR & SSIM '''
         for i in range(len(psnr_iter_test)):
-            self.worksheet.write(self.sum, 0, test_name)
-            self.worksheet.write(self.sum, 1, LF_name[i])
-            self.worksheet.write(self.sum, 2, '%.6f' % psnr_iter_test[i])
-            self.worksheet.write(self.sum, 3, '%.6f' % ssim_iter_test[i])
-            self.sum = self.sum + 1
+            self.add_sheet(test_name, LF_name[i], psnr_iter_test[i], ssim_iter_test[i])
 
         psnr_epoch_test = float(np.array(psnr_iter_test).mean())
         ssim_epoch_test = float(np.array(ssim_iter_test).mean())
+        self.add_sheet(test_name, 'average', psnr_epoch_test, ssim_epoch_test)
+        self.sum = self.sum + 1
+
+    def add_sheet(self, test_name, LF_name, psnr_iter_test, ssim_iter_test):
+        ''' Save PSNR & SSIM '''
         self.worksheet.write(self.sum, 0, test_name)
-        self.worksheet.write(self.sum, 1, 'average')
-        self.worksheet.write(self.sum, 2, '%.6f' % psnr_epoch_test)
-        self.worksheet.write(self.sum, 3, '%.6f' % ssim_epoch_test)
+        self.worksheet.write(self.sum, 1, LF_name)
+        self.worksheet.write(self.sum, 2, '%.6f' % psnr_iter_test)
+        self.worksheet.write(self.sum, 3, '%.6f' % ssim_iter_test)
         self.sum = self.sum + 1
 
 

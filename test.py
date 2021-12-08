@@ -84,6 +84,7 @@ def main(args):
 
         psnr_mean_test = float(np.array(psnr_testset).mean())
         ssim_mean_test = float(np.array(ssim_testset).mean())
+        excel_file.add_sheet('ALL', 'Average', psnr_mean_test, ssim_mean_test)
         print('The mean psnr on testsets is %.5f, mean ssim is %.5f' % (psnr_mean_test, ssim_mean_test))
         excel_file.xlsx_file.save(str(result_dir) + '/evaluation.xls')
 
