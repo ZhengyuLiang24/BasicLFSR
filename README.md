@@ -10,15 +10,15 @@ So stay tuned!
 
 
 ## Methods
-|     Methods     |   Paper | Repository |
-| :----------: |  :-----: | :-------: |
+|  <div style="width: 80pt">   Methods     |   Paper | Repository |
+| :-------------: |  :-----: | :-------: |
 | LFSSR       | Light Field Spatial Super-Resolution Using Deep Efficient Spatial-Angular Separable Convolution. [TIP2018](https://ieeexplore.ieee.org/abstract/document/8561240) | [spatialsr/<br />DeepLightFieldSSR](https://github.com/spatialsr/DeepLightFieldSSR)|
 | resLF       | Residual Networks for Light Field Image Super-Resolution. [CVPR2019](https://openaccess.thecvf.com/content_CVPR_2019/papers/Zhang_Residual_Networks_for_Light_Field_Image_Super-Resolution_CVPR_2019_paper.pdf) | [shuozh/resLF](https://github.com/shuozh/resLF)|
 | HDDRNet     | High-Dimensional Dense Residual Convolutional Neural Network for Light Field Reconstruction. [TPAMI2019](https://ieeexplore.ieee.org/abstract/document/8854138) | [monaen/<br />LightFieldReconstruction](https://github.com/monaen/LightFieldReconstruction)
 | LF-InterNet | Spatial-Angular Interaction for Light Field Image Super-Resolution. [ECCV2019](https://www.researchgate.net/profile/Yingqian-Wang-4/publication/338003771_Spatial-Angular_Interaction_for_Light_Field_Image_Super-Resolution/links/5efeedbd92851c52d61380a2/Spatial-Angular-Interaction-for-Light-Field-Image-Super-Resolution.pdf) | [YingqianWang/<br />LF-InterNet](https://github.com/YingqianWang/LF-InterNet)
 | LFSSR-ATO   | Light field spatial super-resolution via deep combinatorial geometry embedding and structural consistency regularization. [CVPR2020](https://openaccess.thecvf.com/content_CVPR_2020/papers/Jin_Light_Field_Spatial_Super-Resolution_via_Deep_Combinatorial_Geometry_Embedding_and_CVPR_2020_paper.pdf) | [jingjin25/<br />LFSSR-ATO](https://github.com/jingjin25/LFSSR-ATO) |
 | LF-DFnet    | Light field image super-resolution using deformable convolution. [TIP2020](https://ieeexplore.ieee.org/abstract/document/9286855) | [YingqianWang/<br />LF-DFnet](https://github.com/YingqianWang/LF-DFnet)
-| MEG_Net     | End-to-End Light Field Spatial Super-Resolution Network using Multiple Epipolar Geometry. [TIP2021](https://ieeexplore.ieee.org/abstract/document/9465683) | [shuozh/MEG-Net](https://github.com/shuozh/MEG-Net)
+| MEG-Net     | End-to-End Light Field Spatial Super-Resolution Network using Multiple Epipolar Geometry. [TIP2021](https://ieeexplore.ieee.org/abstract/document/9465683) | [shuozh/MEG-Net](https://github.com/shuozh/MEG-Net)
 
 
 ## Datasets
@@ -107,7 +107,7 @@ and PSNR and SSIM metrics are used for quantitative evaluation.
                       ---> VAL_epoch_01
                       ---> VAL_epoch_02
                       ---> ...
-          ---> SR_5x5_4x
+      ---> SR_5x5_4x
   ```
 
 ## Test
@@ -142,9 +142,9 @@ and PSNR and SSIM metrics are used for quantitative evaluation.
                               ---> ...
                           ---> [dataset_2_name]
                           ---> ...
-                      ---> VAL_epoch_02
+                      ---> VAL_epoch_01
                       ---> ...
-          ---> SR_5x5_4x
+      ---> SR_5x5_4x
   ```
 
 
