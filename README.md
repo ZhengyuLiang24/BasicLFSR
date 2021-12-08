@@ -10,7 +10,7 @@ So stay tuned!
 
 
 ## Methods
-|  <div style="width: 80pt">   Methods     |   Paper | Repository |
+|  <div style="width: 100pt">   Methods     |   Paper | Repository |
 | :-------------: |  :-----: | :-------: |
 | LFSSR       | Light Field Spatial Super-Resolution Using Deep Efficient Spatial-Angular Separable Convolution. [TIP2018](https://ieeexplore.ieee.org/abstract/document/8561240) | [spatialsr/<br />DeepLightFieldSSR](https://github.com/spatialsr/DeepLightFieldSSR)|
 | resLF       | Residual Networks for Light Field Image Super-Resolution. [CVPR2019](https://openaccess.thecvf.com/content_CVPR_2019/papers/Zhang_Residual_Networks_for_Light_Field_Image_Super-Resolution_CVPR_2019_paper.pdf) | [shuozh/resLF](https://github.com/shuozh/resLF)|
