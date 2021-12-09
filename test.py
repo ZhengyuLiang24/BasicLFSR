@@ -32,24 +32,28 @@ def main(args):
 
 
     ''' Load Pre-Trained PTH '''
-    ckpt_path = './pth/' + args.model_name + '_' + str(args.angRes_in) + 'x' + str(args.angRes_in) + '_' + \
-                str(args.scale_factor) + 'x_model.pth'
-    checkpoint = torch.load(ckpt_path, map_location='cpu')
-    try:
-        new_state_dict = OrderedDict()
-        for k, v in checkpoint['state_dict'].items():
-            name = 'module.' + k  # add `module.`
-            new_state_dict[name] = v
-        # load params
-        net.load_state_dict(new_state_dict)
-        print('Use pretrain model!')
-    except:
-        new_state_dict = OrderedDict()
-        for k, v in checkpoint['state_dict'].items():
-            new_state_dict[k] = v
-        # load params
-        net.load_state_dict(new_state_dict)
-        print('Use pretrain model!')
+    if args.use_pre_ckpt == False:
+        net.apply(MODEL.weights_init)
+    else:
+        ckpt_path = args.path_pre_pth
+        checkpoint = torch.load(ckpt_path, map_location='cpu')
+        try:
+            new_state_dict = OrderedDict()
+            for k, v in checkpoint['state_dict'].items():
+                name = 'module.' + k  # add `module.`
+                new_state_dict[name] = v
+            # load params
+            net.load_state_dict(new_state_dict)
+            print('Use pretrain model!')
+        except:
+            new_state_dict = OrderedDict()
+            for k, v in checkpoint['state_dict'].items():
+                new_state_dict[k] = v
+            # load params
+            net.load_state_dict(new_state_dict)
+            print('Use pretrain model!')
+            pass
+        pass
 
     net = net.to(device)
     cudnn.benchmark = True
