@@ -26,11 +26,6 @@ class get_model(nn.Module):
         self.output = nn.Conv2d(in_channels=self.channels, out_channels=1, kernel_size=3, stride=1, padding=1, bias=False)
         self.relu = nn.ReLU(inplace=True)
 
-        # for m in self.modules():
-        #     if isinstance(m, nn.Conv2d):
-        #         n = m.kernel_size[0] * m.kernel_size[1] * m.out_channels
-        #         m.weight.data.normal_(0, sqrt(2. / n))
-
     def make_layer(self, block, channels, num_of_layer):
         layers = []
         for _ in range(num_of_layer):
@@ -47,7 +42,6 @@ class get_model(nn.Module):
         return out
 
 
-
 class Conv_ReLU_Block(nn.Module):
     def __init__(self, channels):
         super(Conv_ReLU_Block, self).__init__()
@@ -56,7 +50,6 @@ class Conv_ReLU_Block(nn.Module):
 
     def forward(self, x):
         return self.relu(self.conv(x))
-
 
 
 def weights_init(m):
@@ -68,7 +61,6 @@ def weights_init(m):
     pass
 
 
-
 class get_loss(nn.Module):
     def __init__(self,args):
         super(get_loss, self).__init__()
@@ -78,22 +70,3 @@ class get_loss(nn.Module):
         loss = self.criterion_Loss(SR, HR)
 
         return loss
-
-
-
-if __name__ == "__main__":
-    import time
-    from option import args
-    net = get_model(args).cuda()
-    from thop import profile
-    angRes = 5
-    input = torch.randn(2, 1, 32*angRes, 32*angRes).cuda()
-    total = sum([param.nelement() for param in net.parameters()])
-    angRes = torch.tensor([angRes]).int()
-    start = time.clock()
-    flops, params = profile(net, inputs=(input, angRes))
-    elapsed = (time.clock() - start)
-    print("   Time used:", elapsed)
-    print('   Number of parameters: %.2fM' % (total / 1e6))
-    print('   Number of parameters: %.2fM' % (params/1e6))
-    print('   Number of FLOPs: %.2fG' % (flops*2/1e9))
