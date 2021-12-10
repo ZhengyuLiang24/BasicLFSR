@@ -176,7 +176,6 @@ class net4x(nn.Module):
         return sr_4x
 
 
-
 def get_upsample_filter(size):
     """Make a 2D bilinear kernel suitable for upsampling"""
     factor = (size + 1) // 2
@@ -217,14 +216,6 @@ class AltFilter(nn.Module):
         return out
 
 
-
-
-
-
-
-
-
-
 class get_loss(nn.Module):
     def __init__(self, args):
         super(get_loss, self).__init__()
@@ -235,35 +226,7 @@ class get_loss(nn.Module):
 
         return loss
 
+
 def weights_init(m):
     pass
 
-
-
-
-if __name__ == "__main__":
-    import time
-    from option import args
-
-    net = get_model(args).cuda()
-    from thop import profile
-
-    angRes = 5
-
-    input = torch.randn(1, 1, 32 * angRes, 32 * angRes).cuda()
-    flops, params = profile(net, inputs=(input, angRes))
-
-    start = time.clock()
-    times = 100
-    for index in range(times):
-        print(index)
-        input = torch.randn(1, 1, 32 * angRes, 32 * angRes).cuda()
-        total = sum([param.nelement() for param in net.parameters()])
-        angRes = torch.tensor([angRes]).int()
-        output = net(input, angRes)
-    elapsed = (time.clock() - start) / times
-
-    print("   Time used:", elapsed)
-    print('   Number of parameters: %.2fM' % (total / 1e6))
-    print('   Number of parameters: %.2fM' % (params / 1e6))
-    print('   Number of FLOPs: %.2fG' % (flops * 2 / 1e9))
