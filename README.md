@@ -1,6 +1,6 @@
 # BasicLFSR
 
-### <img src="https://github.com/ZhengyuLiang24/BasicLFSR/blob/main/figs/Thumbnail.jpg" width="1000">
+### <img src="https://raw.github.com/ZhengyuLiang24/BasicLFSR/main/fig/Thumbnail.jpg" width="1000">
 
 **BasicLFSR is an open-source and easy-to-use Light Field (LF) image Super-Ressolution (SR) toolbox based on PyTorch, 
 including a simple pipeline to train/valid/test your methods and a benchmark to comprehensively evaluate the performance of existing methods.
