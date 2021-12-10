@@ -64,7 +64,6 @@ class get_model(nn.Module):
         lf_fea = self.relu(self.fea_conv0(lf_lr.view(-1, 1, h, w)))
         lf_fea = self.fea_resblock(lf_fea).view(B, an2, -1, h, w)  # [B,an2,channels,h,w]
 
-
         # 预置输出
         out = []
         for i in range(self.an2):
@@ -176,37 +175,3 @@ class get_loss(nn.Module):
 
 def weights_init(m):
     pass
-
-
-if __name__ == "__main__":
-    import time
-    from option import args
-
-    net = get_model(args).cuda()
-    from thop import profile
-
-    angRes = 5
-
-    input = torch.randn(1, 1, 32 * angRes, 32 * angRes).cuda()
-    flops, params = profile(net, inputs=(input, angRes))
-
-    start = time.clock()
-    times = 100
-    for index in range(times):
-        print(index)
-        input = torch.randn(1, 1, 32 * angRes, 32 * angRes).cuda()
-        total = sum([param.nelement() for param in net.parameters()])
-        angRes = torch.tensor([angRes]).int()
-        output = net(input, angRes)
-    elapsed = (time.clock() - start)
-
-    print("   Time used:", elapsed)
-    print('   Number of parameters: %.2fM' % (total / 1e6))
-    print('   Number of parameters: %.2fM' % (params / 1e6))
-    print('   Number of FLOPs: %.2fG' % (flops * 2 / 1e9))
-
-    
- 
-
-
- 
