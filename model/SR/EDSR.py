@@ -89,20 +89,3 @@ def weights_init(m):
         torch.nn.init.xavier_normal_(m.weight.data)
     pass
 
-
-if __name__ == "__main__":
-    import time
-    from option import args
-    net = get_model(args).cuda()
-    from thop import profile
-    angRes = 5
-    input = torch.randn(1, 1, 32*angRes, 32*angRes).cuda()
-    total = sum([param.nelement() for param in net.parameters()])
-    angRes = torch.tensor([angRes]).int()
-    start = time.clock()
-    flops, params = profile(net, inputs=(input, angRes))
-    elapsed = (time.clock() - start)
-    print("   Time used:", elapsed)
-    print('   Number of parameters: %.2fM' % (total / 1e6))
-    print('   Number of parameters: %.2fM' % (params/1e6))
-    print('   Number of FLOPs: %.2fG' % (flops*2/1e9))
