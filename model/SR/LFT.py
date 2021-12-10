@@ -273,11 +273,6 @@ def interpolate(x, angRes, scale_factor, mode):
     return x_upscale
 
 
-
-
-
-
-
 class get_loss(nn.Module):
     def __init__(self, args):
         super(get_loss, self).__init__()
@@ -290,29 +285,5 @@ class get_loss(nn.Module):
 
 
 def weights_init(m):
-
     pass
 
-
-
-if __name__ == "__main__":
-    import time
-    from option import args
-
-    args.channels = 32
-    net = get_model(args)
-    from thop import profile
-
-    Lr_angRes_in = 5
-    Lr_angRes_out = 5
-    Lr_class = 3
-    total = sum([param.nelement() for param in net.parameters()])
-    Lr_info = torch.tensor([[Lr_angRes_in], [Lr_angRes_out], [Lr_class]]).int()
-    start = time.clock()
-    input = torch.randn(1, 1, 32 * Lr_angRes_in, 32 * Lr_angRes_in)
-    flops, params = profile(net, inputs=(input, Lr_info))
-    elapsed = (time.clock() - start)
-    print("   Time used:", elapsed)
-    print('   Number of parameters: %.2fM' % (total / 1e6))
-    print('   Number of parameters: %.2fM' % (params / 1e6))
-    print('   Number of FLOPs: %.2fG' % (flops / 1e9))
