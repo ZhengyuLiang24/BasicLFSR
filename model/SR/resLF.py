@@ -237,31 +237,3 @@ class get_loss(nn.Module):
 
         return loss
 
-
-
-if __name__ == "__main__":
-    import time
-    from option import args
-    net = get_model(args).cuda()
-    from thop import profile
-    angRes = 5
-
-    input = torch.randn(1, 1, 32 * angRes, 32 * angRes).cuda()
-    flops, params = profile(net, inputs=(input, angRes))
-
-    start = time.clock()
-    times = 1
-    for index in range(times):
-        print(index)
-        input = torch.randn(1, 1, 32 * angRes, 32 * angRes).cuda()
-        total = sum([param.nelement() for param in net.parameters()])
-        angRes = torch.tensor([angRes]).int()
-        output = net(input, angRes)
-    elapsed = (time.clock() - start)
-
-
-
-    print("   Time used:", elapsed)
-    print('   Number of parameters: %.2fM' % (total / 1e6))
-    print('   Number of parameters: %.2fM' % (params/1e6))
-    print('   Number of FLOPs: %.2fG' % (flops*2/1e9))
