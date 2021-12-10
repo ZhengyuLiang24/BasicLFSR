@@ -1,31 +1,28 @@
 # BasicLFSR
 
-BasicLFSR is an open-source and easy-to-use **Light Field (LF) image Super-Ressolution (SR)** toolbox based on PyTorch, including a collection of papers on LF image SR and a benchmark to comprehensively evaluate the performance of existing methods.
-We also provided simple pipelines to train/valid/test state-of-the-art methods to get started quickly, and you can transform your methods into the benchmark.
+### <img src="https://raw.github.com/YingqianWang/Awesome-LF-Image-SR/master/Fig/Thumbnail.jpg" width="1000">
 
-**Note**: This repository will be updated on a regular basis, and the pretrained models of existing methods will be open-sourced one after another.
-So stay tuned!
+**BasicLFSR is an open-source and easy-to-use Light Field (LF) image Super-Ressolution (SR) toolbox based on PyTorch, 
+including a simple pipeline to train/valid/test your methods and a benchmark to comprehensively evaluate the performance of existing methods.
+You can use the pipeline to get started quickly, and transform your methods into the benchmark.**
+
+**Note: This repository will be updated on a regular basis, and the pretrained models of existing methods will be open-sourced one after another.
+So stay tuned!**
+
+## Contributions
+* **We provide an easy-to-use toolbox based on PyTorch for LF image SR.**
+* **We reproduce and retrain multiple existing methods on a unified datasets.**
+* **To make the communities better get access to this area, we build the benchmark and share retrained models.**
 
 
-
-
-## Methods
-|    Methods     |   Paper | Repository |
-| :-------------: |  :-----: | :-------: |
-| **LFSSR**       | Light Field Spatial Super-Resolution Using Deep Efficient Spatial-Angular Separable Convolution. [TIP2018](https://ieeexplore.ieee.org/abstract/document/8561240) | [spatialsr/<br />DeepLightFieldSSR](https://github.com/spatialsr/DeepLightFieldSSR)|
-| **resLF**      | Residual Networks for Light Field Image Super-Resolution. [CVPR2019](https://openaccess.thecvf.com/content_CVPR_2019/papers/Zhang_Residual_Networks_for_Light_Field_Image_Super-Resolution_CVPR_2019_paper.pdf) | [shuozh/resLF](https://github.com/shuozh/resLF)|
-| **HDDRNet**     | High-Dimensional Dense Residual Convolutional Neural Network for Light Field Reconstruction. [TPAMI2019](https://ieeexplore.ieee.org/abstract/document/8854138) | [monaen/<br />LightFieldReconstruction](https://github.com/monaen/LightFieldReconstruction)
-| **LF-InterNet** | Spatial-Angular Interaction for Light Field Image Super-Resolution. [ECCV2019](https://www.researchgate.net/profile/Yingqian-Wang-4/publication/338003771_Spatial-Angular_Interaction_for_Light_Field_Image_Super-Resolution/links/5efeedbd92851c52d61380a2/Spatial-Angular-Interaction-for-Light-Field-Image-Super-Resolution.pdf) | [YingqianWang/<br />LF-InterNet](https://github.com/YingqianWang/LF-InterNet)
-| **LFSSR-ATO**   | Light field spatial super-resolution via deep combinatorial geometry embedding and structural consistency regularization. [CVPR2020](https://openaccess.thecvf.com/content_CVPR_2020/papers/Jin_Light_Field_Spatial_Super-Resolution_via_Deep_Combinatorial_Geometry_Embedding_and_CVPR_2020_paper.pdf) | [jingjin25/<br />LFSSR-ATO](https://github.com/jingjin25/LFSSR-ATO) |
-| **LF-DFnet**    | Light field image super-resolution using deformable convolution. [TIP2020](https://ieeexplore.ieee.org/abstract/document/9286855) | [YingqianWang/<br />LF-DFnet](https://github.com/YingqianWang/LF-DFnet)
-| **MEG-Net**     | End-to-End Light Field Spatial Super-Resolution Network using Multiple Epipolar Geometry. [TIP2021](https://ieeexplore.ieee.org/abstract/document/9465683) | [shuozh/MEG-Net](https://github.com/shuozh/MEG-Net)
+## News & Updates
 
 
 ## Datasets
-We used the EPFL, HCInew, HCIold, INRIA and STFgantry datasets for both training and test. 
-Please first download our datasets via [Baidu Drive](https://pan.baidu.com/s/1mYQR6OBXoEKrOk0TjV85Yw) (key:7nzy) or [OneDrive](https://stuxidianeducn-my.sharepoint.com/:f:/g/personal/zyliang_stu_xidian_edu_cn/EpkUehGwOlFIuSSdadq9S4MBEeFkNGPD_DlzkBBmZaV_mA?e=FiUeiv), and place the 5 datasets to the folder **`./datasets/`**.
+**We used the EPFL, HCInew, HCIold, INRIA and STFgantry datasets for both training and test. 
+Please first download our datasets via [Baidu Drive](https://pan.baidu.com/s/1mYQR6OBXoEKrOk0TjV85Yw) (key:7nzy) or [OneDrive](https://stuxidianeducn-my.sharepoint.com/:f:/g/personal/zyliang_stu_xidian_edu_cn/EpkUehGwOlFIuSSdadq9S4MBEeFkNGPD_DlzkBBmZaV_mA?e=FiUeiv), and place the 5 datasets to the folder `./datasets/`.**
 
-* After downloading, you should find following structure:
+* **After downloading, you should find following structure:**
   ```
   ├──./datasets/
   │    ├── EPFL
@@ -40,59 +37,16 @@ Please first download our datasets via [Baidu Drive](https://pan.baidu.com/s/1mY
   │    ├── HCI_new
   │    ├── ...
   ```
-
-
-* Run **`Generate_Data_for_Training.m`** to generate training data. The generated data will be saved in **`./data_for_train/`** (SR_5x5_2x, SR_5x5_4x).
-* Run **`Generate_Data_for_Test.m`** to generate test data. The generated data will be saved in **`./data_for_test/`** (SR_5x5_2x, SR_5x5_4x).
-
-## Benchmark
-
-We benchmark several methods on above datasets, 
-and PSNR and SSIM metrics are used for quantitative evaluation. 
-
-
-### PSNR and SSIM values achieved by different methods for 2xSR:
-|    Method    | Scale |  #Params. | EPFL | HCInew | HCIold | INRIA | STFgantry | Average |
-| :----------: | :---: | :-------: | :-------: | :-------: | :-------: | :-------: | :-------: | :-------: |
-| Bilinear     | x2 | -- | 28.479949/0.918006 | 30.717944/0.919248 | 36.243278/0.970928 | 30.133901/0.945545 | 29.577468/0.931030 | 31.030508/0.936951 |
-| Bicubic      | x2 | -- | 29.739509/0.937581 | 31.887011/0.935637 | 37.685776/0.978536 | 31.331483/0.957731 | 31.062631/0.949769 | 32.341282/0.951851 |
-| VDSR         | x2 |
-| EDSR         | x2 |    | 33.088922/0.962924 | 34.828374/0.959156 | 41.013989/0.987400 | 34.984982/0.976397 | 36.295865/0.981809 | 
-| RCSN         | x2 |    | 
-| resLF        | x2 |    | 
-| LFSSR        | x2 |    | 33.670594/0.974351 | 36.801555/0.974910 | 43.811050/0.993773 | 35.279443/0.983202 | 37.943969/0.989818 |
-| LF-ATO       | x2 |    | 34.271635/0.975711 | 37.243620/0.976684 | 44.205264/0.994202 | 36.169943/0.984241 | 39.636445/0.992862 |
-| LF-InterNet  | x2 |    | 
-| LF-DFnet     | x2 |    | 
-| MEG-Net      | x2 |    | 
-| LFT          | x2 |    | 
-
-
-### PSNR and SSIM values achieved by different methods for 4xSR:
-
-|    Method    | Scale |  #Params. | EPFL | HCInew | HCIold | INRIA | STFgantry | Average |
-| :----------: | :---: | :-------: | :-------: | :-------: | :-------: | :-------: | :-------: | :-------: |
-| Bilinear     | x4 | -- | 24.567490/0.815793 | 27.084949/0.839677 | 31.688225/0.925630 | 26.226265/0.875682 | 25.203262/0.826105 | 26.954038/0.856577 |
-| Bicubic      | x4 | -- | 25.264206/0.832389 | 27.714905/0.851661 | 32.576315/0.934428 | 26.951718/0.886740 | 26.087451/0.845230 | 27.718919/0.870090 |
-| VDSR         | x4 |
-| EDSR         | x4 |    | 
-| RCSN         | x4 |    | 
-| resLF        | x4 |    | 
-| LFSSR        | x4 |    | 
-| LF-ATO       | x4 |    | 
-| LF-InterNet  | x4 |    | 
-| LF-DFnet     | x4 |    | 
-| MEG-Net      | x4 |    | 
-| LFT          | x4 |    | 
-
+* **Run `Generate_Data_for_Training.m` to generate training data. The generated data will be saved in `./data_for_train/` (SR_5x5_2x, SR_5x5_4x).**
+* **Run `Generate_Data_for_Test.m` to generate test data. The generated data will be saved in `./data_for_test/` (SR_5x5_2x, SR_5x5_4x).**
 
 ## Train
-* Run **`train.py`** to perform network training. Example for training [model_name] on 5x5 angular resolution for 2x/4x SR:
+* **Run **`train.py`** to perform network training. Example for training [model_name] on 5x5 angular resolution for 2x/4x SR:**
   ```
   $ python train.py --model_name [model_name] --angRes 5 --scale_factor 2 --batch_size 8
   $ python train.py --model_name [model_name] --angRes 5 --scale_factor 4 --batch_size 4
   ```
-* Checkpoints and Logs will be saved to **`./log/`**, and the **`./log/`** has following structure:
+* **Checkpoints and Logs will be saved to **`./log/`**, and the **`./log/`** has following structure:**
   ```
   ├──./log/
   │    ├── SR_5x5_2x
@@ -113,13 +67,13 @@ and PSNR and SSIM metrics are used for quantitative evaluation.
   ```
 
 ## Test
-* Run **`test.py`** to perform network inference. Example for test [model_name] on 5x5 angular resolution for 2x/4xSR:
+* **Run **`test.py`** to perform network inference. Example for test [model_name] on 5x5 angular resolution for 2x/4xSR:**
   ```
   $ python test.py --model_name [model_name] --angRes 5 --scale_factor 2  
   $ python test.py --model_name [model_name] --angRes 5 --scale_factor 4 
   ```
   
-* The PSNR and SSIM values of each dataset will be saved to **`./log/`**, and the **`./log/`** is following structure:
+* **The PSNR and SSIM values of each dataset will be saved to **`./log/`**, and the **`./log/`** is following structure:**
   ```
   ├──./log/
   │    ├── SR_5x5_2x
@@ -152,22 +106,65 @@ and PSNR and SSIM metrics are used for quantitative evaluation.
   ```
 
 
+
+## Benchmark
+
+**We benchmark several methods on above datasets, and PSNR and SSIM metrics are used for quantitative evaluation.
+To obtain the metric score for a dataset with `M` scenes, we first calculated the metric on `AxA` SAIs on each scene separately, then obtained the score for each scene by averaging its `A^2` scores, and finally obtained the score for this dataset by averaging the scores of all its `M` scenes.**
+
+**Note: More research and methods about LF image SR can be referred to [YingqianWang/LF-Image-SR](https://github.com/YingqianWang/LF-Image-SR).**
+
+### PSNR and SSIM values achieved by different methods on 5x5 angular resolution for 2xSR:
+|    Method    | Scale |  #Params. | EPFL | HCInew | HCIold | INRIA | STFgantry | Model |
+| :----------: | :---: | :-------: | :-------: | :-------: | :-------: | :-------: | :-------: | :-------: |
+| **Bilinear**     |   x2  | -- | 28.480/0.9180 | 30.718/0.9192 | 36.243/0.9709 | 30.134/0.9455 | 29.577/0.9310 |  |
+| **Bicubic**      |   x2  | -- | 29.740/0.9376 | 31.887/0.9356 | 37.686/0.9785 | 31.331/0.9577 | 31.063/0.9498 |
+| VDSR         |   x2  |    | 32.498/0.9598 | 34.371/0.9561 | 40.606/0.9867 | 34.439/0.9741 | 35.541/0.9789 |
+| EDSR         |   x2  |    | 33.089/0.9629 | 34.828/0.9592 | 41.014/0.9874 | 34.985/0.9764 | 36.296/0.9818 | 
+| RCAN         |   x2  |    | 33.159/0.9634 | 35.022/0.9603 | 41.125/0.9875 | 35.046/0.9769 | 36.670/0.9831 |
+| resLF        |   x2  |    | 33.617/0.9706 | 36.685/0.9739 | 43.422/0.9932 | 35.395/0.9804 | 38.354/0.9904 |
+| LFSSR        |   x2  |    | 33.671/0.9744 | 36.802/0.9749 | 43.811/0.9938 | 35.279/0.9832 | 37.944/0.9898 |
+| LF-ATO       |   x2  |    | 34.272/0.9757 | 37.244/0.9767 | 44.205/0.9942 | 36.170/0.9842 | 39.636/0.9929 |
+| LF_InterNet  |   x2  |    | 34.112/0.9760 | 37.170/0.9763 | 44.573/0.9946 | 44.573/0.9946 | 38.435/0.9909 |
+| LF-DFnet     |   x2  |    | 
+| MEG-Net      |   x2  |    | 34.312/0.9773 | 37.424/0.9777 | 44.097/0.9942 | 36.103/0.9849 | 38.767/0.9915 |
+| IINet        |   x2  |    | 34.732/0.9773 | 37.768/0.9790 | 44.852/0.9948 | 36.566/0.9853 | 39.894/0.9936 |
+| LFT          |   x2  |    | 34.753/0.9778 | 37.762/0.9788 | 44.392/0.9944 | 36.503/0.9854 | 40.316/0.9939 |
+
+
+### PSNR and SSIM values achieved by different methods on 5x5 angular resolution for 4xSR:
+
+|    Method    | Scale |  #Params. | EPFL | HCInew | HCIold | INRIA | STFgantry | Model |
+| :----------: | :---: | :-------: | :-------: | :-------: | :-------: | :-------: | :-------: | :-------: |
+| Bilinear     |   x4  | -- | 24.567/0.8158 | 27.085/0.8397 | 31.688/0.9256 | 26.226/0.8757 | 25.203/0.8261 |  |
+| Bicubic      |   x4  | -- | 25.264/0.8324 | 27.715/0.8517 | 32.576/0.9344 | 26.952/0.8867 | 26.087/0.8452 |  |
+| VDSR         |   x4  |    | 27.246/0.8777 | 29.308/0.8823 | 34.810/0.9515 | 29.186/0.9204|  28.506/0.9009 |
+| EDSR         |   x4  |    | 27.833/0.8854 | 29.591/0.8869 | 35.176/0.9536 | 29.656/0.9257 | 28.703/0.9072 |
+| RCAN         |   x4  |    | 27.907/0.8863 | 29.694/0.8886 | 35.359/0.9548 | 29.805/0.9276 | 29.021/0.9131 |
+| resLF        |   x4  |    | 28.260/0.9035 | 30.723/0.9107 | 36.705/0.9682 | 30.338/0.9412 | 30.191/0.9372 |
+| LFSSR        |   x4  |    | 28.596/0.9118 | 30.928/0.9145 | 36.907/0.9696 | 30.585/0.9467 | 30.570/0.9426 |
+| LF-ATO       |   x4  |    | 28.514/0.9115 | 30.880/0.9135 | 36.999/0.9699 | 30.711/0.9484 | 30.607/0.9430 |
+| LF_InterNet  |   x4  |    | 28.812/0.9162 | 30.961/0.9161 | 37.150/0.9716 | 30.777/0.9491 | 30.365/0.9409 |
+| LF-DFnet     |   x4  |    | 
+| MEG-Net      |   x4  |    | 28.749/0.9160 | 31.103/0.9177 | 37.287/0.9716 | 30.674/0.9490 | 30.771/0.9453 |
+| IINet        |   x4  |    | 29.038/0.9188 | 31.331/0.9208 | 37.620/0.9734 | 31.034/0.9515 | 31.261/0.9502 |
+| LFT          |   x4  |    | 29.261/0.9209 | 31.433/0.9215 | 37.633/0.9735 | 31.219/0.9524 | 31.795/0.9543 |
+
+
+
+
+
 ## Recources
-We provide some original super-resolved images and useful resources to facilitate researchers to reproduce the above results.
+**We provide some original super-resolved images and useful resources to facilitate researchers to reproduce the above results.**
 
 
 
-## Other Recources
-* [YapengTian/Single-Image-Super-Resolution](https://github.com/YapengTian/Single-Image-Super-Resolution)
-* [LoSealL/VideoSuperResolution](https://github.com/LoSealL/VideoSuperResolution)
-* [ChaofWang/Awesome-Super-Resolution](https://github.com/ChaofWang/Awesome-Super-Resolution)
-* [ptkin/Awesome-Super-Resolution](https://github.com/ptkin/Awesome-Super-Resolution)
-* [lightfield-analysis/resources](https://github.com/lightfield-analysis/resources)
-* [Joechann0831/LFSRBenchmark](https://github.com/Joechann0831/LFSRBenchmark)
-* [YingqianWang/LF-Image-SR](https://github.com/YingqianWang/LF-Image-SR)
+## Acknowledgement
+
+**We would like to thank [Yingqian Wang](https://github.com/YingqianWang) for the helpful discussions and insightful suggestions regarding this repository.**
 
 
 ## Contact
-Any question regarding this work can be addressed to [zyliang@nudt.edu.cn](zyliang@nudt.edu.cn).
+**Any question regarding this work can be addressed to [zyliang@nudt.edu.cn](zyliang@nudt.edu.cn).**
 
 
