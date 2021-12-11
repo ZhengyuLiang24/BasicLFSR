@@ -2,28 +2,27 @@
 
 ### <img src="https://raw.github.com/ZhengyuLiang24/BasicLFSR/main/figs/Thumbnail.jpg" width="1000">
 
-**BasicLFSR is an open-source and easy-to-use Light Field (LF) image Super-Ressolution (SR) toolbox based on PyTorch, 
-including a simple pipeline to train/valid/test your methods and a benchmark to comprehensively evaluate the performance of existing methods.
-You can use the pipeline to get started quickly, and transform your methods into the benchmark.**
+**BasicLFSR is a PyTorch-based open-source and easy-to-use toolbox for Light Field (LF) image Super-Ressolution (SR). This toolbox 
+introduces a simple pipeline to train/test your methods, and builds a benchmark to comprehensively evaluate the performance of existing methods.
+Our BasicLFSR can help researchers to get access to LF image SR quickly, and facilitates the development of novel methods. Welcome to contribute your own methods to the benchmark.**
 
-**Note: This repository will be updated on a regular basis, and the pretrained models of existing methods will be open-sourced one after another.
-So stay tuned!**
+**Note: This repository will be updated on a regular basis. Please stay tuned!**
 
 ## Contributions
-* **We provide an easy-to-use toolbox based on PyTorch for LF image SR.**
-* **We reproduce and retrain multiple existing methods on a unified datasets.**
-* **To make the communities better get access to this area, we build the benchmark and share retrained models.**
+* **We provide a PyTorch-based open-source and easy-to-use toolbox for LF image SR.**
+* **We re-implement a number of existing methods on the unified datasets, and develop a benchmark for performance evaluation.**
+* **We share the codes, models and results of existing methods to help researchers better get access to this area.**
 
 
 ## News & Updates
-* **Dec 10, 2021: Add parameters comparision for existing methods.**
+* **Dec 10, 2021: Add the comparisions of model sizes of existing methods.**
 
 
 ## Datasets
 **We used the EPFL, HCInew, HCIold, INRIA and STFgantry datasets for both training and test. 
 Please first download our datasets via [Baidu Drive](https://pan.baidu.com/s/1mYQR6OBXoEKrOk0TjV85Yw) (key:7nzy) or [OneDrive](https://stuxidianeducn-my.sharepoint.com/:f:/g/personal/zyliang_stu_xidian_edu_cn/EpkUehGwOlFIuSSdadq9S4MBEeFkNGPD_DlzkBBmZaV_mA?e=FiUeiv), and place the 5 datasets to the folder `./datasets/`.**
 
-* **After downloading, you should find following structure:**
+* **Our project has the following structure:**
   ```
   ├──./datasets/
   │    ├── EPFL
@@ -47,7 +46,7 @@ Please first download our datasets via [Baidu Drive](https://pan.baidu.com/s/1mY
   $ python train.py --model_name [model_name] --angRes 5 --scale_factor 2 --batch_size 8
   $ python train.py --model_name [model_name] --angRes 5 --scale_factor 4 --batch_size 4
   ```
-* **Checkpoints and Logs will be saved to **`./log/`**, and the **`./log/`** has following structure:**
+* **Checkpoints and Logs will be saved to **`./log/`**, and the **`./log/`** has the following structure:**
   ```
   ├──./log/
   │    ├── SR_5x5_2x
@@ -74,7 +73,7 @@ Please first download our datasets via [Baidu Drive](https://pan.baidu.com/s/1mY
   $ python test.py --model_name [model_name] --angRes 5 --scale_factor 4 
   ```
   
-* **The PSNR and SSIM values of each dataset will be saved to **`./log/`**, and the **`./log/`** is following structure:**
+* **The PSNR and SSIM values of each dataset will be saved to **`./log/`**, and the **`./log/`** has the following structure:**
   ```
   ├──./log/
   │    ├── SR_5x5_2x
@@ -110,12 +109,12 @@ Please first download our datasets via [Baidu Drive](https://pan.baidu.com/s/1mY
 
 ## Benchmark
 
-**We benchmark several methods on above datasets, and PSNR and SSIM metrics are used for quantitative evaluation.
-To obtain the metric score for a dataset with `M` scenes, we first calculated the metric on `AxA` SAIs on each scene separately, then obtained the score for each scene by averaging its `A^2` scores, and finally obtained the score for this dataset by averaging the scores of all its `M` scenes.**
+**We benchmark several methods on the above datasets. PSNR and SSIM metrics are used for quantitative evaluation.
+To obtain the metric score for a dataset with `M` scenes, we first calculate the metric on `AxA` SAIs on each scene separately, then obtain the score for each scene by averaging its `A^2` scores, and finally obtain the score for this dataset by averaging the scores of all its `M` scenes.**
 
-**Note: More research and methods about LF image SR can be referred to [YingqianWang/LF-Image-SR](https://github.com/YingqianWang/LF-Image-SR).**
+**Note: A detailed review of existing LF image SR methods can be referred to [YingqianWang/LF-Image-SR](https://github.com/YingqianWang/LF-Image-SR).**
 
-### PSNR and SSIM values achieved by different methods on 5x5 angular resolution for 2xSR:
+### PSNR and SSIM values achieved by different methods on 5x5 LFs for 2xSR:
 |    Methods    | Scale |  #Params. | EPFL | HCInew | HCIold | INRIA | STFgantry | Model |
 | :----------: | :---: | :-------: | :-------: | :-------: | :-------: | :-------: | :-------: | :-------: |
 | **Bilinear**     |   x2  | -- | 28.480/0.9180 | 30.718/0.9192 | 36.243/0.9709 | 30.134/0.9455 | 29.577/0.9310 |  |
@@ -148,17 +147,15 @@ To obtain the metric score for a dataset with `M` scenes, we first calculated th
 | [**LF_InterNet**](https://github.com/YingqianWang/LF-InterNet)  |   x4  | 5.483M   | 28.812/0.9162 | 30.961/0.9161 | 37.150/0.9716 | 30.777/0.9491 | 30.365/0.9409 |
 | [**LF-DFnet**](https://github.com/YingqianWang/LF-DFnet)     |   x4  |    | 
 | [**MEG-Net**](https://github.com/shuozh/MEG-Net)      |   x4  | 1.775M   | 28.749/0.9160 | 31.103/0.9177 | 37.287/0.9716 | 30.674/0.9490 | 30.771/0.9453 |
-| [**IINet**](https://github.com/GaoshengLiu/LF-IINet)        |   x4  | 4.886M   | 29.038/0.9188 | 31.331/0.9208 | 37.620/0.9734 | 31.034/0.9515 | 31.261/0.9502 |
+| [**LF-IINet**](https://github.com/GaoshengLiu/LF-IINet)        |   x4  | 4.886M   | 29.038/0.9188 | 31.331/0.9208 | 37.620/0.9734 | 31.034/0.9515 | 31.261/0.9502 |
 | [**LFT**](https://github.com/ZhengyuLiang24/LFT)           |   x4  | 1.163M | 29.261/0.9209 | 31.433/0.9215 | 37.633/0.9735 | 31.219/0.9524 | 31.795/0.9543 |
 
 
-
-
-
 ## Recources
-**We provide some original super-resolved images and useful resources to facilitate researchers to reproduce the above results.**
+**We provide the result files generated by the aforementioned methods. (coming soon)**
 
-
+## To Do List:
+* **Upload the result files of each method.
 
 ## Acknowledgement
 
@@ -166,6 +163,6 @@ To obtain the metric score for a dataset with `M` scenes, we first calculated th
 
 
 ## Contact
-**Any question regarding this work can be addressed to [zyliang@nudt.edu.cn](zyliang@nudt.edu.cn).**
+**Welcome to raise issues or email to [zyliang@nudt.edu.cn](zyliang@nudt.edu.cn) for any question regarding our BasicLFSR.**
 
 
