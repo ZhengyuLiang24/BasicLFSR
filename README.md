@@ -18,6 +18,7 @@ Our BasicLFSR can help researchers to get access to LF image SR quickly, and fac
 <br>
 
 ## News & Updates
+* **Des 12, 2021: Add the dataset generation codes based on PyThon, i.e., `Generate_Data_for_Training.py` and `Generate_Data_for_Test.py`.**
 * **Dec 10, 2021: Add the comparisions of model sizes of existing methods.**
 
 <br>
@@ -41,8 +42,8 @@ Please first download our datasets via [Baidu Drive](https://pan.baidu.com/s/1mY
   │    ├── HCI_new
   │    ├── ...
   ```
-* **Run `Generate_Data_for_Training.m` to generate training data. The generated data will be saved in `./data_for_train/` (SR_5x5_2x, SR_5x5_4x).**
-* **Run `Generate_Data_for_Test.m` to generate test data. The generated data will be saved in `./data_for_test/` (SR_5x5_2x, SR_5x5_4x).**
+* **Run `Generate_Data_for_Training.m` or `Generate_Data_for_Training.py` to generate training data. The generated data will be saved in `./data_for_train/` (SR_5x5_2x, SR_5x5_4x).**
+* **Run `Generate_Data_for_Test.m` or `Generate_Data_for_Test.py` to generate test data. The generated data will be saved in `./data_for_test/` (SR_5x5_2x, SR_5x5_4x).**
 
 <br>
 
