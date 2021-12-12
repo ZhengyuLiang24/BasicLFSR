@@ -134,8 +134,8 @@ To obtain the metric score for a dataset with `M` scenes, we first calculate the
 | [**LFSSR**](https://github.com/jingjin25/LFSSR-SAS-PyTorch)        |   x2  | 0.888M | 33.671/0.9744 | 36.802/0.9749 | 43.811/0.9938 | 35.279/0.9832 | 37.944/0.9898 |
 | [**LF-ATO**](https://github.com/jingjin25/LFSSR-ATO)       |   x2  | 1.216M | 34.272/0.9757 | 37.244/0.9767 | 44.205/0.9942 | 36.170/0.9842 | 39.636/0.9929 |
 | [**LF_InterNet**](https://github.com/YingqianWang/LF-InterNet)  |   x2  | 5.040M   | 34.112/0.9760 | 37.170/0.9763 | 44.573/0.9946 | 44.573/0.9946 | 38.435/0.9909 |
-| [**LF-DFnet**](https://github.com/YingqianWang/LF-DFnet)     |   x2  |    | 
-| [**MEG-Net**](https://github.com/shuozh/MEG-Net)      |   x2  | 1.693M | 34.312/0.9773 | 37.424/0.9777 | 44.097/0.9942 | 36.103/0.9849 | 38.767/0.9915 |
+| [**LF-DFnet**](https://github.com/YingqianWang/LF-DFnet)     |   x2  |  3.940M  | 34.513/0.9755 | 37.418/0.9773 | 44.198/0.9941 | 36.416/0.9840 | 
+| [**MEG-Net**](https://github.com/shuozh/MEG-Net)      |   x2  | 1.693M | 34.312/0.9773 | 37.424/0.9777 | 44.097/0.9942 | 36.103/0.9849 | 38.767/0.9915 | 39.427/0.9926 |
 | [**LF-IINet**](https://github.com/GaoshengLiu/LF-IINet)        |   x2  | 4.837M | 34.732/0.9773 | 37.768/0.9790 | 44.852/0.9948 | 36.566/0.9853 | 39.894/0.9936 |
 | [**LFT**](https://github.com/ZhengyuLiang24/LFT)          |   x2  | 1.114M | 34.753/0.9778 | 37.762/0.9788 | 44.392/0.9944 | 36.503/0.9854 | 40.316/0.9939 |
 
@@ -153,7 +153,7 @@ To obtain the metric score for a dataset with `M` scenes, we first calculate the
 | [**LFSSR**](https://github.com/jingjin25/LFSSR-SAS-PyTorch)        |   x4  | 1.774M   | 28.596/0.9118 | 30.928/0.9145 | 36.907/0.9696 | 30.585/0.9467 | 30.570/0.9426 |
 | [**LF-ATO**](https://github.com/jingjin25/LFSSR-ATO)        |   x4  | 1.364M   | 28.514/0.9115 | 30.880/0.9135 | 36.999/0.9699 | 30.711/0.9484 | 30.607/0.9430 |
 | [**LF_InterNet**](https://github.com/YingqianWang/LF-InterNet)  |   x4  | 5.483M   | 28.812/0.9162 | 30.961/0.9161 | 37.150/0.9716 | 30.777/0.9491 | 30.365/0.9409 |
-| [**LF-DFnet**](https://github.com/YingqianWang/LF-DFnet)     |   x4  |    | 
+| [**LF-DFnet**](https://github.com/YingqianWang/LF-DFnet)     |   x4  |  3.990M  | 28.774/0.9165 | 31.234/0.9196 | 37.321/0.9718 | 30.826/0.9503 | 31.147/0.9494 | 
 | [**MEG-Net**](https://github.com/shuozh/MEG-Net)      |   x4  | 1.775M   | 28.749/0.9160 | 31.103/0.9177 | 37.287/0.9716 | 30.674/0.9490 | 30.771/0.9453 |
 | [**LF-IINet**](https://github.com/GaoshengLiu/LF-IINet)        |   x4  | 4.886M   | 29.038/0.9188 | 31.331/0.9208 | 37.620/0.9734 | 31.034/0.9515 | 31.261/0.9502 |
 | [**LFT**](https://github.com/ZhengyuLiang24/LFT)           |   x4  | 1.163M | 29.261/0.9209 | 31.433/0.9215 | 37.633/0.9735 | 31.219/0.9524 | 31.795/0.9543 |
