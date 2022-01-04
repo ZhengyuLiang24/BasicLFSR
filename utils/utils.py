@@ -131,71 +131,31 @@ def cal_metrics(args, label, out,):
 
 
 def LFdivide(data, angRes, patch_size, stride):
-    uh, vw = data.shape
-    h0 = uh // angRes
-    w0 = vw // angRes
-    bdr = (patch_size - stride) // 2
-    h = h0 + 2 * bdr
-    w = w0 + 2 * bdr
-    if (h - patch_size) % stride:
-        numU = (h - patch_size)//stride + 2
-    else:
-        numU = (h - patch_size)//stride + 1
-    if (w - patch_size) % stride:
-        numV = (w - patch_size)//stride + 2
-    else:
-        numV = (w - patch_size)//stride + 1
-    hE = stride * (numU-1) + patch_size
-    wE = stride * (numV-1) + patch_size
+    data = data
+    if data.dim() == 2:
+        data = rearrange(data, '(a1 h) (a2 w) -> (a1 a2) 1 h w', a1=angRes, a2=angRes)
+        pass
+    [_, _, h0, w0] = data.size()
 
-    dataE = torch.zeros(hE*angRes, wE*angRes)
-    for u in range(angRes):
-        for v in range(angRes):
-            Im = data[u*h0:(u+1)*h0, v*w0:(v+1)*w0]
-            dataE[u*hE : u*hE+h, v*wE : v*wE+w] = ImageExtend(Im, bdr)
-    subLF = torch.zeros(numU, numV, patch_size*angRes, patch_size*angRes)
-    for kh in range(numU):
-        for kw in range(numV):
-            for u in range(angRes):
-                for v in range(angRes):
-                    uu = u*hE + kh*stride
-                    vv = v*wE + kw*stride
-                    subLF[kh, kw, u*patch_size:(u+1)*patch_size, v*patch_size:(v+1)*patch_size] = dataE[uu:uu+patch_size, vv:vv+patch_size]
+    bdr = (patch_size - stride) // 2
+    numU = (h0 + bdr * 2 - 1) // stride
+    numV = (w0 + bdr * 2 - 1) // stride
+    pad = torch.nn.ReflectionPad2d(padding=(bdr, bdr+stride-1, bdr, bdr+stride-1))
+    data = pad(data)
+    subLF = F.unfold(data, kernel_size=patch_size, stride=stride)
+    subLF = rearrange(subLF, '(a1 a2) (h w) (n1 n2) -> n1 n2 (a1 h) (a2 w)',
+                      a1=angRes, a2=angRes, h=patch_size, w=patch_size, n1=numU, n2=numV)
+
     return subLF
 
 
-def ImageExtend(Im, bdr):
-    h, w = Im.shape
-    Im_lr = torch.flip(Im, dims=[-1])
-    Im_ud = torch.flip(Im, dims=[-2])
-    Im_diag = torch.flip(Im, dims=[-1, -2])
-
-    Im_up = torch.cat((Im_diag, Im_ud, Im_diag), dim=-1)
-    Im_mid = torch.cat((Im_lr, Im, Im_lr), dim=-1)
-    Im_down = torch.cat((Im_diag, Im_ud, Im_diag), dim=-1)
-    Im_Ext = torch.cat((Im_up, Im_mid, Im_down), dim=-2)
-    Im_out = Im_Ext[h - bdr: 2 * h + bdr, w - bdr: 2 * w + bdr]
-
-    return Im_out
-
-
-def LFintegrate(subLF, angRes, pz, stride, h0, w0):
-    numU, numV, pH, pW = subLF.shape
-    # H, W = numU*pH, numV*pW
-    ph, pw = pH //angRes, pW //angRes
-    bdr = (pz - stride) //2
-    temp = torch.zeros(stride*numU, stride*numV)
-    outLF = torch.zeros(angRes, angRes, h0, w0)
-    for u in range(angRes):
-        for v in range(angRes):
-            for ku in range(numU):
-                for kv in range(numV):
-                    temp[ku*stride:(ku+1)*stride, kv*stride:(kv+1)*stride] = subLF[ku, kv, u*ph+bdr:u*ph+bdr+stride, v*pw+bdr:v*ph+bdr+stride]
-            #plt.figure()
-            #plt.imshow(outLF_temp)
-            outLF[u, v, :, :] = temp[0:h0, 0:w0]
-    #plt.figure()
-    #plt.imshow(outLF)
+def LFintegrate(subLF, angRes, pz, stride):
+    if subLF.dim() == 4:
+        subLF = rearrange(subLF, 'n1 n2 (a1 h) (a2 w) -> n1 n2 a1 a2 h w', a1=angRes, a2=angRes)
+        pass
+    bdr = (pz - stride) // 2
+    outLF = subLF[:, :, :, :, bdr:bdr+stride, bdr:bdr+stride]
+    outLF = rearrange(outLF, 'n1 n2 a1 a2 h w -> a1 a2 (n1 h) (n2 w)')
 
     return outLF
 

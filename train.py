@@ -231,7 +231,7 @@ def test(test_loader, device, net, save_dir=None):
 
         ''' Restore the Patches to LFs '''
         Sr_4D_y = LFintegrate(subLFout, args.angRes_out, args.patch_size_for_test * args.scale_factor,
-                              args.stride_for_test * args.scale_factor, h0 * args.scale_factor, w0 * args.scale_factor)
+                              args.stride_for_test * args.scale_factor)
         Sr_SAI_y = rearrange(Sr_4D_y, 'a1 a2 h w -> 1 1 (a1 h) (a2 w)')
 
         ''' Calculate the PSNR & SSIM '''
