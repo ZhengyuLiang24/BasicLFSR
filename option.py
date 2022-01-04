@@ -36,5 +36,6 @@ if args.task == 'SR':
     args.angRes_out = args.angRes
     args.patch_size_for_test = 32
     args.stride_for_test = 16
+    args.minibatch_for_test = 16
 
 del args.angRes

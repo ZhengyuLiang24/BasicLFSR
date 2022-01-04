@@ -210,24 +210,22 @@ def test(test_loader, device, net, save_dir=None):
         Hr_SAI_y = Hr_SAI_y
         Sr_SAI_cbcr = Sr_SAI_cbcr
 
-        uh, vw = Lr_SAI_y.shape
-        h0, w0 = int(uh // args.angRes_in), int(vw // args.angRes_in)
-
         ''' Crop LFs into Patches '''
         subLFin = LFdivide(Lr_SAI_y, args.angRes_in, args.patch_size_for_test, args.stride_for_test)
         numU, numV, H, W = subLFin.size()
-        subLFout = torch.zeros(numU, numV, args.angRes_in * args.patch_size_for_test * args.scale_factor,
+        subLFin = rearrange(subLFin, 'n1 n2 a1h a2w -> (n1 n2) 1 a1h a2w')
+        subLFout = torch.zeros(numU * numV, 1, args.angRes_in * args.patch_size_for_test * args.scale_factor,
                                args.angRes_in * args.patch_size_for_test * args.scale_factor)
 
         ''' SR the Patches '''
-        for u in range(numU):
-            for v in range(numV):
-                tmp = subLFin[u:u+1, v:v+1, :, :]
-                with torch.no_grad():
-                    net.eval()
-                    torch.cuda.empty_cache()
-                    out = net(tmp.to(device), data_info)
-                    subLFout[u:u+1, v:v+1, :, :] = out.squeeze()
+        for i in range(0, numU * numV, args.minibatch_for_test):
+            tmp = subLFin[i:min(i + args.minibatch_for_test, numU * numV), :, :, :]
+            with torch.no_grad():
+                net.eval()
+                torch.cuda.empty_cache()
+                out = net(tmp.to(device), data_info)
+                subLFout[i:min(i + args.minibatch_for_test, numU * numV), :, :, :] = out
+        subLFout = rearrange(subLFout, '(n1 n2) 1 a1h a2w -> n1 n2 a1h a2w', n1=numU, n2=numV)
 
         ''' Restore the Patches to LFs '''
         Sr_4D_y = LFintegrate(subLFout, args.angRes_out, args.patch_size_for_test * args.scale_factor,
