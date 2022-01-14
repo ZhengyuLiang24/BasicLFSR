@@ -8,6 +8,7 @@ import logging
 from option import args
 from einops import rearrange
 import xlwt
+import torch.nn.functional as F
 
 
 class ExcelFile():
@@ -129,33 +130,46 @@ def cal_metrics(args, label, out,):
     return PSNR_mean, SSIM_mean
 
 
+def ImageExtend(Im, bdr):
+    [_, _, h, w] = Im.size()
+    Im_lr = torch.flip(Im, dims=[-1])
+    Im_ud = torch.flip(Im, dims=[-2])
+    Im_diag = torch.flip(Im, dims=[-1, -2])
+
+    Im_up = torch.cat((Im_diag, Im_ud, Im_diag), dim=-1)
+    Im_mid = torch.cat((Im_lr, Im, Im_lr), dim=-1)
+    Im_down = torch.cat((Im_diag, Im_ud, Im_diag), dim=-1)
+    Im_Ext = torch.cat((Im_up, Im_mid, Im_down), dim=-2)
+    Im_out = Im_Ext[:, :, h - bdr[0]: 2 * h + bdr[1], w - bdr[2]: 2 * w + bdr[3]]
+
+    return Im_out
+
 
 def LFdivide(data, angRes, patch_size, stride):
-    data = data
-    if data.dim() == 2:
-        data = rearrange(data, '(a1 h) (a2 w) -> (a1 a2) 1 h w', a1=angRes, a2=angRes)
-        pass
+    data = rearrange(data, '(a1 h) (a2 w) -> (a1 a2) 1 h w', a1=angRes, a2=angRes)
     [_, _, h0, w0] = data.size()
 
     bdr = (patch_size - stride) // 2
     numU = (h0 + bdr * 2 - 1) // stride
     numV = (w0 + bdr * 2 - 1) // stride
-    pad = torch.nn.ReflectionPad2d(padding=(bdr, bdr+stride-1, bdr, bdr+stride-1))
-    data = pad(data)
-    subLF = F.unfold(data, kernel_size=patch_size, stride=stride)
+    data_pad = ImageExtend(data, [bdr, bdr+stride-1, bdr, bdr+stride-1])
+    # pad = torch.nn.ReflectionPad2d(padding=(bdr, bdr+stride-1, bdr, bdr+stride-1))
+    # data_pad = pad(data)
+    subLF = F.unfold(data_pad, kernel_size=patch_size, stride=stride)
     subLF = rearrange(subLF, '(a1 a2) (h w) (n1 n2) -> n1 n2 (a1 h) (a2 w)',
                       a1=angRes, a2=angRes, h=patch_size, w=patch_size, n1=numU, n2=numV)
 
     return subLF
 
 
-def LFintegrate(subLF, angRes, pz, stride):
+def LFintegrate(subLF, angRes, pz, stride, h, w):
     if subLF.dim() == 4:
         subLF = rearrange(subLF, 'n1 n2 (a1 h) (a2 w) -> n1 n2 a1 a2 h w', a1=angRes, a2=angRes)
         pass
     bdr = (pz - stride) // 2
     outLF = subLF[:, :, :, :, bdr:bdr+stride, bdr:bdr+stride]
     outLF = rearrange(outLF, 'n1 n2 a1 a2 h w -> a1 a2 (n1 h) (n2 w)')
+    outLF = outLF[:, :, 0:h, 0:w]
 
     return outLF
 
