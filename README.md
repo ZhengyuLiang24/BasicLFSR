@@ -18,6 +18,7 @@ Our BasicLFSR can help researchers to get access to LF image SR quickly, and fac
 <br>
 
 ## News & Updates
+* **Jan 18, 2022: Upload the result files of [DPT](https://github.com/BITszwang/DPT), accepted to AAAI 2022.**
 * **Jan 02, 2022: Upload the result files of existing methods to OneDrive.**
 * **Des 12, 2021: Add the dataset generation codes based on Python, i.e., `Generate_Data_for_Training.py` and `Generate_Data_for_Test.py`.**
 * **Dec 10, 2021: Add the comparisions of model sizes of existing methods.**
@@ -140,7 +141,7 @@ To obtain the metric score for a dataset with `M` scenes, we first calculate the
 | [**MEG-Net**](https://github.com/shuozh/MEG-Net)               |   x2  | 1.693M | 34.312/0.9773 | 37.424/0.9777 | 44.097/0.9942 | 36.103/0.9849 | 38.767/0.9915 | [OneDrive](https://stuxidianeducn-my.sharepoint.com/:u:/g/personal/zyliang_stu_xidian_edu_cn/ERTfTtTrxZFKg_aFWDY4UPoBwarWfb4-N6tWFnyGFO1B_g?e=3Es5TK) |
 | [**LF-IINet**](https://github.com/GaoshengLiu/LF-IINet)        |   x2  | 4.837M | 34.732/0.9773 | 37.768/0.9790 | 44.852/0.9948 | 36.566/0.9853 | 39.894/0.9936 | [OneDrive](https://stuxidianeducn-my.sharepoint.com/:u:/g/personal/zyliang_stu_xidian_edu_cn/ET2p0yPcHwhMlgEVseaIzqoBYVxcSWbErtUt31ExtbYkDw?e=Kz0gTW) |
 | [**LFT**](https://github.com/ZhengyuLiang24/LFT)               |   x2  | 1.114M | 34.753/0.9778 | 37.762/0.9788 | 44.392/0.9944 | 36.503/0.9854 | 40.316/0.9939 | [OneDrive](https://stuxidianeducn-my.sharepoint.com/:u:/g/personal/zyliang_stu_xidian_edu_cn/ETVEt-4UanxApjXy8e9PDG8BvGE9RQ7Gc7Xl3QsV_FClLQ?e=nFAnLi) |
-
+| [**DPT**](https://github.com/BITszwang/DPT)                    |   x2  | 3.731M | 34.490/0.9758 | 37.355/0.9771 | 44.302/0.9943 | 36.409/0.9843 | 39.429/0.9926 | [OneDrive](https://stuxidianeducn-my.sharepoint.com/:u:/g/personal/zyliang_stu_xidian_edu_cn/EYYILn3mmSVAtwAkk90fHs8B7tjPIQJQLXLTNhVohP_8Ng?e=lZHFqe)
 
 ### PSNR and SSIM values achieved by different methods on 5x5 angular resolution for 4xSR:
 
@@ -159,7 +160,7 @@ To obtain the metric score for a dataset with `M` scenes, we first calculate the
 | [**MEG-Net**](https://github.com/shuozh/MEG-Net)                |   x4  | 1.775M | 28.749/0.9160 | 31.103/0.9177 | 37.287/0.9716 | 30.674/0.9490 | 30.771/0.9453 | [OneDrive](https://stuxidianeducn-my.sharepoint.com/:u:/g/personal/zyliang_stu_xidian_edu_cn/Ea76GJHEcp5NmysacM-MLXUBLaKsqT3LseZgrjM2-_QgiA?e=hJSmOQ) |
 | [**LF-IINet**](https://github.com/GaoshengLiu/LF-IINet)         |   x4  | 4.886M | 29.038/0.9188 | 31.331/0.9208 | 37.620/0.9734 | 31.034/0.9515 | 31.261/0.9502 | [OneDrive](https://stuxidianeducn-my.sharepoint.com/:u:/g/personal/zyliang_stu_xidian_edu_cn/EdsomADGXzhPlNk9FDolGI8BHaj_JpBAutibC1GOhRx5Dg?e=mlPUWk) |
 | [**LFT**](https://github.com/ZhengyuLiang24/LFT)                |   x4  | 1.163M | 29.261/0.9209 | 31.433/0.9215 | 37.633/0.9735 | 31.219/0.9524 | 31.795/0.9543 | [OneDrive](https://stuxidianeducn-my.sharepoint.com/:u:/g/personal/zyliang_stu_xidian_edu_cn/EWAD9t3MAuVMnJFF7U_2UlwBs2KjabTmdR9qlpKbt3btSA?e=Be8lLe) |
-
+| [**DPT**](https://github.com/BITszwang/DPT)                     |   x4  | 3.778M | 28.939/0.9170 | 31.196/0.9188 | 37.412/0.9721 | 30.964/0.9503 | 31.150/0.9488 | [OneDrive](https://stuxidianeducn-my.sharepoint.com/:u:/g/personal/zyliang_stu_xidian_edu_cn/EW7MkV9H97FOjEqb1j1NiMMBaNvm5-zdXYhQ3531HeLozg?e=ARYqTe)
 <br>
 
 ## Recources

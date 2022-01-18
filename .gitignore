@@ -1,3 +1,6 @@
 __pycache__/
 .idea/
 log/*
+*.pth
+*.h5
+*.tar
