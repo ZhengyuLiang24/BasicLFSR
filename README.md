@@ -177,7 +177,7 @@ To obtain the metric score for a dataset with `M` scenes, we first calculate the
 
 ## Acknowledgement
 
-**We would like to thank [Yingqian Wang](https://github.com/YingqianWang) for the helpful discussions and insightful suggestions regarding this repository.**
+**We would like to thank [Yingqian Wang](https://github.com/YingqianWang) for the helpful discussions and insightful suggestions regarding this repository. We thank [Shuo Zhang](https://github.com/shuozh), [Shunzhou Wang](https://github.com/BITszwang) and [Gaosheng Liu](https://github.com/GaoshengLiu) for sharing their codes..**
 
 
 ## Contact
