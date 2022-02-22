@@ -47,8 +47,7 @@ def main(args):
         logger.log_string('Do not use pre-trained model!')
     else:
         try:
-            ckpt_path = './pth/' + args.model_name + '_' + str(args.angRes_in) + 'x' + str(args.angRes_in) + '_' + \
-                        str(args.scale_factor) + 'x_model.pth'
+            ckpt_path = args.path_pre_pth
             checkpoint = torch.load(ckpt_path, map_location='cpu')
             start_epoch = checkpoint['epoch']
             try:
@@ -250,8 +249,8 @@ def test(test_loader, device, net, save_dir=None):
             Sr_4D_rgb = rearrange(Sr_SAI_rgb, '(a1 h) (a2 w) c -> a1 a2 h w c', a1=args.angRes_out, a2=args.angRes_out)
 
             # save the SAI
-            path = str(save_dir_) + '/' + LF_name[0] + '_SAI.bmp'
-            imageio.imwrite(path, Sr_SAI_rgb)
+            # path = str(save_dir_) + '/' + LF_name[0] + '_SAI.bmp'
+            # imageio.imwrite(path, Sr_SAI_rgb)
             # save the center view
             img = Sr_4D_rgb[args.angRes_out // 2, args.angRes_out // 2, :, :, :]
             path = str(save_dir_) + '/' + LF_name[0] + '_' + 'CenterView.bmp'
