@@ -83,7 +83,7 @@ def main(args):
             ssim_epoch_test = float(np.array(ssim_iter_test).mean())
             psnr_testset.append(psnr_epoch_test)
             ssim_testset.append(ssim_epoch_test)
-            print('Test on %s, psnr/ssim is %.2f/%.3f' % (test_name, psnr_epoch_test, ssim_epoch_test))
+            print('Test on %s, psnr/ssim is %.3f/%.4f' % (test_name, psnr_epoch_test, ssim_epoch_test))
             pass
 
         psnr_mean_test = float(np.array(psnr_testset).mean())
