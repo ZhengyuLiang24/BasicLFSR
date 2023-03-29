@@ -18,6 +18,8 @@ Our BasicLFSR can help researchers to get access to LF image SR quickly, and fac
 <br>
 
 ## News & Updates
+* **Mar 29, 2023: Add a new work [HLFSR-SSR](https://github.com/duongvinh/HLFSR-SSR).**
+* **Mar 24, 2023: Add a new work [LFSSR_SAV](https://github.com/Joechann0831/SAV_conv).**
 * **Feb 16, 2023: Add a new work [EPIT](https://github.com/ZhengyuLiang24/EPIT).**
 * **Feb 22, 2022: Add a new work [DistgSSR](https://github.com/YingqianWang/DistgSSR), accepted to TPAMI.**
 * **Jan 21, 2022: Upload the pre-trained models of existing methods to OneDrive. Please refer to [Recources](https://github.com/ZhengyuLiang24/BasicLFSR#recources).**
@@ -140,11 +142,13 @@ To obtain the metric score for a dataset with `M` scenes, we first calculate the
 | [**LF_InterNet**](https://github.com/YingqianWang/LF-InterNet) |   x2  | 5.040M | 34.112/0.9760          | 37.170/0.9763         | 44.573/0.9946          | 35.829/0.9843         | 38.435/0.9909       |
 | [**LF-DFnet**](https://github.com/YingqianWang/LF-DFnet)       |   x2  | 3.940M | 34.513/0.9755          | 37.418/0.9773         | 44.198/0.9941          | 36.416/0.9840         | 39.427/0.9926       |
 | [**MEG-Net**](https://github.com/shuozh/MEG-Net)               |   x2  | 1.693M | 34.312/0.9773          | 37.424/0.9777         | 44.097/0.9942          | 36.103/0.9849         | 38.767/0.9915       |
-| [**LF-IINet**](https://github.com/GaoshengLiu/LF-IINet)        |   x2  | 4.837M | 34.732/0.9773          | 37.768/0.9790         | *44.852*/*0.9948*      | 36.566/0.9853         | 39.894/0.9936       |
+| [**LF-IINet**](https://github.com/GaoshengLiu/LF-IINet)        |   x2  | 4.837M | 34.732/0.9773          | 37.768/0.9790         | 44.852/0.9948          | 36.566/0.9853         | 39.894/0.9936       |
 | [**DPT**](https://github.com/BITszwang/DPT)                    |   x2  | 3.731M | 34.490/0.9758          | 37.355/0.9771         | 44.302/0.9943          | 36.409/0.9843         | 39.429/0.9926       |
-| [**LFT**](https://github.com/ZhengyuLiang24/LFT)               |   x2  | 1.114M | 34.804/*0.9781*        | 37.838/0.9791         | 44.522/0.9945          | *36.594*/0.9855   | *40.510*/0.9941 | 
-| [**DistgSSR**](https://github.com/YingqianWang/DistgSSR)       |   x2  | 3.532M | *34.809*/**0.9787**    | *37.959*/*0.9796*   | *44.943*/**0.9949**    | 36.586/*0.9859*   | 40.404/*0.9942* |
-| [**EPIT**](https://github.com/ZhengyuLiang24/EPIT)             |   x2  | 1.421M | **34.826**/0.9775  | **38.228**/**0.9810** | **45.075**/**0.9949**  |  **36.672**/**0.9853** | **42.166**/**0.9957** |
+| [**LFT**](https://github.com/ZhengyuLiang24/LFT)               |   x2  | 1.114M | 34.804/0.9781          | 37.838/0.9791         | 44.522/0.9945          | 36.594/0.9855         | 40.510/0.9941       | 
+| [**DistgSSR**](https://github.com/YingqianWang/DistgSSR)       |   x2  | 3.532M | 34.809/*0.9787**       | 37.959/0.9796         | 44.943/*0.9949*        | 36.586/*0.9859*       | 40.404/0.9942       |
+| [**LFSSR_SAV**](https://github.com/Joechann0831/SAV_conv)      |   x2  | 1.217M | 34.616/0.9772          | 37.425/0.9776         | 44.216/0.9942          | 36.364/0.9849         | 38.689/0.9914
+| [**EPIT**](https://github.com/ZhengyuLiang24/EPIT)             |   x2  | 1.421M | *34.826*/0.9775        | *38.228*/**0.9810**   | **45.075**/*0.9949*    | *36.672*/0.9853       | **42.166**/**0.9957** |
+| [**HLFSR-SSR**](https://github.com/duongvinh/HLFSR-SSR)        |   x2  | 13.72M | **35.310**/**0.9800**  | **38.317**/*0.9807*   | *44.978*/**0.9950**    | **37.060**/**0.9867** | *40.849*/*0.9947*    |
 
 ### PSNR and SSIM values achieved by different methods on 5x5 angular resolution for 4xSR:
 
@@ -163,9 +167,11 @@ To obtain the metric score for a dataset with `M` scenes, we first calculate the
 | [**MEG-Net**](https://github.com/shuozh/MEG-Net)                |   x4  | 1.775M | 28.749/0.9160 | 31.103/0.9177 | 37.287/0.9716 | 30.674/0.9490 | 30.771/0.9453 |
 | [**LF-IINet**](https://github.com/GaoshengLiu/LF-IINet)         |   x4  | 4.886M | 29.038/0.9188 | 31.331/0.9208 | 37.620/0.9734 | 31.034/0.9515 | 31.261/0.9502 |
 | [**DPT**](https://github.com/BITszwang/DPT)                     |   x4  | 3.778M | 28.939/0.9170 | 31.196/0.9188 | 37.412/0.9721 | 30.964/0.9503 | 31.150/0.9488 |
-| [**LFT**](https://github.com/ZhengyuLiang24/LFT)                |   x4  | 1.163M |*29.255*/**0.9210** |   *31.462*/*0.9218* | *37.630*/*0.9735* | *31.205*/*0.9524* | *31.860*/*0.9548* |
-| [**DistgSSR**](https://github.com/YingqianWang/DistgSSR)        |   x4  | 3.582M |   28.992/0.9195    |   31.380/0.9217     | 37.563/0.9732         | 30.994/0.9519       | 31.649/0.9535 |
-| [**EPIT**](https://github.com/ZhengyuLiang24/EPIT)             |   x4   | 1.470M |**29.339**/*0.9197* |**31.511**/**0.9231**| **37.677**/**0.9737**  |  **31.372**/**0.9526** | **32.179**/**0.9571** |
+| [**LFT**](https://github.com/ZhengyuLiang24/LFT)                |   x4  | 1.163M | 29.255/0.9210        | 31.462/0.9218 | 37.630/0.9735 | 31.205/0.9524 | *31.860*/*0.9548* |
+| [**DistgSSR**](https://github.com/YingqianWang/DistgSSR)        |   x4  | 3.582M | 28.992/0.9195        | 31.380/0.9217 | 37.563/0.9732 | 30.994/0.9519 | 31.649/0.9535 |
+| [**LFSSR_SAV**](https://github.com/Joechann0831/SAV_conv)       |   x4  | 1.543M |**29.368**/**0.9223** | 31.450/0.9217       |  37.497/0.9721        | *31.270*/*0.9531* | 31.362/0.9505 |
+| [**EPIT**](https://github.com/ZhengyuLiang24/EPIT)              |   x4  | 1.470M |*29.339*/0.9197       |*31.511*/*0.9231*    | *37.677*/*0.9737*     | **31.372**/0.9526 | **32.179**/**0.9571** |
+| [**HLFSR-SSR**](https://github.com/duongvinh/HLFSR-SSR)         |   x4  | 13.87M | 29.196/*0.9222*      |**31.571**/**0.9238**| **37.776**/**0.9742** | 31.241/**0.9534** | 31.641/0.9537 |
 <br>
 
 ## Recources
