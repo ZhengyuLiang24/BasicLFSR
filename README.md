@@ -18,8 +18,8 @@ Our BasicLFSR can help researchers to get access to LF image SR quickly, and fac
 <br>
 
 ## News & Updates
-* **Mar 29, 2023: Add a new work [HLFSR-SSR](https://github.com/duongvinh/HLFSR-SSR).**
-* **Mar 24, 2023: Add a new work [LFSSR_SAV](https://github.com/Joechann0831/SAV_conv).**
+* **Mar 29, 2023: Add a new work [HLFSR-SSR](https://github.com/duongvinh/HLFSR-SSR), accepted to TCI.**
+* **Mar 24, 2023: Add a new work [LFSSR_SAV](https://github.com/Joechann0831/SAV_conv), accepted to TCI.**
 * **Feb 16, 2023: Add a new work [EPIT](https://github.com/ZhengyuLiang24/EPIT).**
 * **Feb 22, 2022: Add a new work [DistgSSR](https://github.com/YingqianWang/DistgSSR), accepted to TPAMI.**
 * **Jan 21, 2022: Upload the pre-trained models of existing methods to OneDrive. Please refer to [Recources](https://github.com/ZhengyuLiang24/BasicLFSR#recources).**
