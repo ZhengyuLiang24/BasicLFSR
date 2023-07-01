@@ -18,7 +18,7 @@ Our BasicLFSR can help researchers to get access to LF image SR quickly, and fac
 <br>
 
 ## News & Updates
-* **Jul 01, 2023: Update the pre-trained weights of new methods to OneDrive. Please refer to [Recources](https://github.com/ZhengyuLiang24/BasicLFSR#recources).**
+* **Jul 01, 2023: Update the pre-trained models of benchmark methods to [Releases](https://github.com/ZhengyuLiang24/BasicLFSR/releases).**
 * **Jul 01, 2023: Add a new work [LF-DET](https://github.com/Congrx/LF-DET), accepted to IEEE TMM.**
 * **Mar 31, 2023: Add a new benchmark [NTIRE-2023](https://codalab.lisn.upsaclay.fr/competitions/9201).**
 * **Mar 29, 2023: Add a new work [HLFSR-SSR](https://github.com/duongvinh/HLFSR-SSR), accepted to IEEE TCI.**
@@ -232,14 +232,14 @@ To obtain the metric score for a dataset with `M` scenes, we first calculate the
 
 <br>
 
-## Recources
-* **The pre-trained models of the aforementioned methods can be downlaoded via [this link](https://stuxidianeducn-my.sharepoint.com/:f:/g/personal/zyliang_stu_xidian_edu_cn/EtUBJ4eHG7BCjnUmtXpu9o0BvGVk5_v-RG95R_aRN46UwQ).**
+## Resources
+* **The pre-trained models of the aforementioned methods can be downloaded via [Releases](https://github.com/ZhengyuLiang24/BasicLFSR/releases).**
 
 <br>
 
 ## Acknowledgement
 
-**We would like to thank [Yingqian Wang](https://github.com/YingqianWang) for the helpful discussions and insightful suggestions regarding this repository.**
+**We thank [Yingqian Wang](https://github.com/YingqianWang) for the helpful discussions and insightful suggestions regarding this repository.**
 
 
 ## Contact
