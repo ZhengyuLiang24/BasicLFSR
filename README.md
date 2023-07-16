@@ -18,6 +18,7 @@ Our BasicLFSR can help researchers to get access to LF image SR quickly, and fac
 <br>
 
 ## News & Updates
+* **Jul 14, 2023: Congratulation! [EPIT](https://github.com/ZhengyuLiang24/EPIT) is accepted to ICCV 2023!**
 * **Jul 01, 2023: Update the pre-trained models of benchmark methods to [Releases](https://github.com/ZhengyuLiang24/BasicLFSR/releases).**
 * **Jul 01, 2023: Add a new work [LF-DET](https://github.com/Congrx/LF-DET), accepted to IEEE TMM.**
 * **Mar 31, 2023: Add a new benchmark [NTIRE-2023](https://codalab.lisn.upsaclay.fr/competitions/9201).**
