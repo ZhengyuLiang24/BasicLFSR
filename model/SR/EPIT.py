@@ -175,7 +175,7 @@ class get_loss(nn.Module):
         self.criterion_Loss = torch.nn.L1Loss()
 
     def forward(self, out, HR, degrade_info=None):
-        loss = self.criterion_Loss(out['SR'], HR)
+        loss = self.criterion_Loss(out, HR)
 
         return loss
 
